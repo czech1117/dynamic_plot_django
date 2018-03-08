@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--Bokeh Plotting-->
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.css" rel="stylesheet" type="text/css">
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.css" rel="stylesheet" type="text/css">
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.14.min.css" rel="stylesheet" type="text/css">
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.14.min.js"></script>
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-api-0.12.14.js"></script>
+
+    <!--Custom CSS-->
+    <link href="/static/price_compare/css/custom.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="data">
+        {% for d in data_list %}
+        <a href="#">
+            <div class="list_row" data-x="{{ d.x }}" data-y="{{ d.y }}" style="border-style: solid;margin-top:10px;">
+                <ul>
+                  <li>ID: {{ d.id }}</li>
+                  <li>X: {{ d.x }}</li>
+                  <li>Y: {{ d.y }}</li>
+                </ul>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div id="plot">
+        {{ bokeh_script|safe }}
+        {{ bokeh_div|safe }}
+    </div>
+
+</body>
+</html>
